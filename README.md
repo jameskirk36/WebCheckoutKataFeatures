@@ -1,4 +1,4 @@
 WebCheckoutKataFeatures
 =======================
 
-A web-based version of cucumber features for the checkout kata
+Cucumber features for a web-based version of the checkout kata
