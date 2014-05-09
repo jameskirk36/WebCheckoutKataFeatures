@@ -1,17 +1,17 @@
 # Before each scenario empty the basket
 Before do
-  homepage = CheckoutPage.new 
-  homepage.empty_basket
+  @reset_page = EmptyBasketPage.new
+  @reset_page.load
 end
 
 Given(/^I am on the checkout page$/) do
-  homepage = CheckoutPage.new
-  homepage.arrive
+  @page = NewCheckoutPage.new
+  @page.load
 end
 
 When(/^I add an "(.*?)" to my basket$/) do |item|
-  homepage = CheckoutPage.new
-  homepage.add_item_to_basket(item)
+  @page.new_item_box.set item
+  @page.add_item_button.click
 end
 
 When(/^I add the following items to my basket:$/) do |table|
@@ -21,6 +21,5 @@ When(/^I add the following items to my basket:$/) do |table|
 end
 
 Then(/^I see the total price of "(.*?)"$/) do |total_price|
-  homepage = CheckoutPage.new
-  homepage.should_have_total_price(total_price)
+  @page.total_price.text.should == total_price
 end
