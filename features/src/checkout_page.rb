@@ -6,7 +6,10 @@ class CheckoutPage
   include RSpec::Matchers
 
   def arrive
-    visit '/'
+	 visit '/checkout'
+  end
+  def empty_basket
+    visit '/checkout/emptybasket'
   end
 
   def add_item_to_basket(item)
